@@ -359,4 +359,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Built with ❤️ for sustainable energy management**
+**Built with ❤️ for sustainable energy management**#   e l e c t r i c i t y - o p t i m i s e r - a i  
+ 

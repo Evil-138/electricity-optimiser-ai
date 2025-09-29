@@ -1,0 +1,60 @@
+# Configuration settings for Energy Consumption Predictor
+
+# Data paths
+DATA_PATHS:
+  raw_electricity: "data/raw/electricity_consumption.csv"
+  raw_weather: "data/raw/weather_data.csv"
+  processed: "data/processed/processed_data.csv"
+  engineered_features: "data/processed/engineered_features.csv"
+
+# Model paths
+MODEL_PATHS:
+  models_dir: "models"
+  best_model_path: "models/best_model.joblib"
+
+# Data preprocessing parameters
+PREPROCESSING:
+  missing_method: "interpolate"  # Options: interpolate, forward_fill, backward_fill, drop
+  frequency: "H"  # Resampling frequency: H (hourly), D (daily)
+  outlier_method: "iqr"  # Options: iqr, zscore, isolation_forest
+  remove_outliers: true
+
+# Feature engineering parameters
+FEATURE_ENGINEERING:
+  lag_hours: [1, 2, 3, 6, 12, 24, 48, 72, 168]
+  rolling_windows: [6, 12, 24, 48, 168]
+  rolling_stats: ["mean", "std", "min", "max"]
+  ema_alphas: [0.1, 0.3, 0.5, 0.7]
+
+# Model training parameters
+TRAINING:
+  test_size: 0.2
+  validation_splits: 3
+
+# API configuration
+API:
+  host: "0.0.0.0"
+  port: 5000
+  debug: false
+  max_forecast_hours: 720  # 30 days
+  default_forecast_hours: 24
+
+# Visualization settings
+VISUALIZATION:
+  save_path: "visualizations"
+  figsize: [12, 8]
+  dpi: 300
+  style: "seaborn-v0_8"
+  interactive_plots: true
+
+# Logging configuration
+LOGGING:
+  level: "INFO"  # Options: DEBUG, INFO, WARNING, ERROR
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file_path: "logs/energy_predictor.log"
+
+# Performance and resource settings
+PERFORMANCE:
+  n_jobs: -1  # Number of parallel jobs (-1 for all available cores)
+  memory_limit: "4GB"
+  batch_size: 1000

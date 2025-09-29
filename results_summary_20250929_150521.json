@@ -1,0 +1,260 @@
+{
+  "preprocessing": {
+    "shape": [
+      8640,
+      23
+    ],
+    "date_range": [
+      "2023-01-01 00:00:00",
+      "2023-12-31 23:00:00"
+    ]
+  },
+  "feature_engineering": {
+    "shape": [
+      8640,
+      92
+    ],
+    "num_features": 68
+  },
+  "training": {
+    "models": {
+      "xgboost": "CustomRegressor()",
+      "lightgbm": "CustomRegressor(model_type='lightgbm')",
+      "random_forest": "CustomRegressor(model_type='random_forest')",
+      "sarimax": "<src.modeling.SARIMAXModel object at 0x000001B9F45631D0>"
+    },
+    "metrics": {
+      "naive_24h": {
+        "mae": 1.0267881944444444,
+        "rmse": 1.5223728034047037,
+        "mape": 26.45097997721707,
+        "r2": 0.6130657013865597
+      },
+      "seasonal_naive": {
+        "mae": 1.804947916666667,
+        "rmse": 2.6996740951284117,
+        "mape": 50.72864530024209,
+        "r2": -0.21679627900773557
+      },
+      "moving_avg_24h": {
+        "mae": 1.7972511574074073,
+        "rmse": 2.3102888705433666,
+        "mape": 61.56634281920342,
+        "r2": 0.10889728599872472
+      },
+      "xgboost": {
+        "mae": 0.045445971825608486,
+        "rmse": 0.06668580264714333,
+        "mape": 1.1960811250824857,
+        "r2": 0.9992575589776763
+      },
+      "lightgbm": {
+        "mae": 0.055955555326170935,
+        "rmse": 0.07972349012649153,
+        "mape": 1.5351244232728154,
+        "r2": 0.9989388719366917
+      },
+      "random_forest": {
+        "mae": 0.05715971470714485,
+        "rmse": 0.09399942995047318,
+        "mape": 1.5046766196154404,
+        "r2": 0.9985248178992342
+      },
+      "sarimax": {
+        "mae": NaN,
+        "rmse": NaN,
+        "mape": NaN,
+        "r2": NaN
+      }
+    },
+    "predictions": {
+      "y_test": "timestamp\n2023-10-19 09:00:00     4.37\n2023-10-19 10:00:00     3.76\n2023-10-19 11:00:00     4.13\n2023-10-19 12:00:00     3.90\n2023-10-19 13:00:00     4.16\n                       ...  \n2023-12-31 18:00:00     8.53\n2023-12-31 19:00:00    10.94\n2023-12-31 21:00:00     8.54\n2023-12-31 22:00:00     6.87\n2023-12-31 23:00:00     5.59\nName: kwh, Length: 1728, dtype: float64",
+      "xgboost": "[4.376864  3.7582088 4.1685905 ... 8.537641  6.906854  5.484784 ]",
+      "lightgbm": "[4.38172261 3.74856249 4.13149526 ... 8.69040354 6.88455586 5.71972412]",
+      "random_forest": "[4.3756674  3.78762344 4.1833732  ... 8.59887141 6.88795272 5.67949157]"
+    },
+    "feature_names": [
+      "temperature_c",
+      "humidity_percent",
+      "wind_speed_kmh",
+      "precipitation_mm",
+      "cloud_cover_percent",
+      "solar_irradiance_wm2",
+      "hour",
+      "day_of_week",
+      "day_of_month",
+      "month",
+      "quarter",
+      "year",
+      "day_of_year",
+      "hour_sin",
+      "hour_cos",
+      "day_of_week_sin",
+      "day_of_week_cos",
+      "month_sin",
+      "month_cos",
+      "day_of_year_sin",
+      "day_of_year_cos",
+      "is_weekend",
+      "kwh_lag_1h",
+      "kwh_lag_2h",
+      "kwh_lag_3h",
+      "kwh_lag_6h",
+      "kwh_lag_12h",
+      "kwh_lag_24h",
+      "kwh_lag_48h",
+      "kwh_lag_72h",
+      "kwh_lag_168h",
+      "kwh_rolling_6h_mean",
+      "kwh_rolling_6h_std",
+      "kwh_rolling_6h_min",
+      "kwh_rolling_6h_max",
+      "kwh_rolling_12h_mean",
+      "kwh_rolling_12h_std",
+      "kwh_rolling_12h_min",
+      "kwh_rolling_12h_max",
+      "kwh_rolling_24h_mean",
+      "kwh_rolling_24h_std",
+      "kwh_rolling_24h_min",
+      "kwh_rolling_24h_max",
+      "kwh_rolling_48h_mean",
+      "kwh_rolling_48h_std",
+      "kwh_rolling_48h_min",
+      "kwh_rolling_48h_max",
+      "kwh_rolling_168h_mean",
+      "kwh_rolling_168h_std",
+      "kwh_rolling_168h_min",
+      "kwh_rolling_168h_max",
+      "kwh_ema_alpha_0.1",
+      "kwh_ema_alpha_0.3",
+      "kwh_ema_alpha_0.5",
+      "kwh_ema_alpha_0.7",
+      "is_business_day",
+      "season",
+      "is_winter",
+      "is_spring",
+      "is_summer",
+      "is_fall",
+      "is_morning",
+      "is_afternoon",
+      "is_evening",
+      "is_night",
+      "is_peak_morning",
+      "is_peak_evening",
+      "is_peak_hours",
+      "week_of_year",
+      "days_to_weekend",
+      "heating_degree_hours",
+      "cooling_degree_hours",
+      "temp_very_cold",
+      "temp_cold",
+      "temp_mild",
+      "temp_warm",
+      "temp_hot",
+      "apparent_temperature",
+      "comfort_index",
+      "weather_severity",
+      "solar_efficiency",
+      "hour_weekday_interaction",
+      "hour_weekend_interaction",
+      "temp_month_interaction",
+      "weekend_morning",
+      "weekday_rush",
+      "kwh_vs_same_hour_last_week",
+      "kwh_pct_change_1h",
+      "kwh_pct_change_24h",
+      "kwh_pct_change_168h",
+      "kwh_zscore_168h"
+    ],
+    "test_indices": "DatetimeIndex(['2023-10-19 09:00:00', '2023-10-19 10:00:00',\n               '2023-10-19 11:00:00', '2023-10-19 12:00:00',\n               '2023-10-19 13:00:00', '2023-10-19 14:00:00',\n               '2023-10-19 15:00:00', '2023-10-19 16:00:00',\n               '2023-10-19 17:00:00', '2023-10-19 18:00:00',\n               ...\n               '2023-12-31 13:00:00', '2023-12-31 14:00:00',\n               '2023-12-31 15:00:00', '2023-12-31 16:00:00',\n               '2023-12-31 17:00:00', '2023-12-31 18:00:00',\n               '2023-12-31 19:00:00', '2023-12-31 21:00:00',\n               '2023-12-31 22:00:00', '2023-12-31 23:00:00'],\n              dtype='datetime64[ns]', name='timestamp', length=1728, freq=None)",
+    "cross_validation": {
+      "xgboost": {
+        "mae": [
+          0.10383531413558458,
+          0.08630418878324606,
+          0.05450802773099254
+        ],
+        "rmse": [
+          0.14850617955087902,
+          0.11895541518693042,
+          0.07501799637540933
+        ],
+        "mape": [
+          3.289638228174817,
+          2.190182834549683,
+          1.539604449651706
+        ],
+        "r2": [
+          0.9951599369291867,
+          0.9979925708856016,
+          0.9990018776921328
+        ]
+      },
+      "lightgbm": {
+        "mae": [
+          0.10071479878684945,
+          0.07991762832598694,
+          0.05952944757848786
+        ],
+        "rmse": [
+          0.1468848320366106,
+          0.1085883719239043,
+          0.08220405289189256
+        ],
+        "mape": [
+          3.1557765884746605,
+          1.9956252135151613,
+          1.6524160682262874
+        ],
+        "r2": [
+          0.9952650448283785,
+          0.9983272215389077,
+          0.9988014965156515
+        ]
+      },
+      "random_forest": {
+        "mae": [
+          0.14368604008440858,
+          0.09634115489048989,
+          0.06421571931273203
+        ],
+        "rmse": [
+          0.20032839126513077,
+          0.14002237881076326,
+          0.09132822844412525
+        ],
+        "mape": [
+          4.5975545279383265,
+          2.287057276677018,
+          1.7355229775492913
+        ],
+        "r2": [
+          0.9911926150937544,
+          0.9972185792687418,
+          0.9985206773466416
+        ]
+      }
+    }
+  },
+  "saved_models": {
+    "xgboost": "models\\xgboost_20250929_150521.joblib",
+    "lightgbm": "models\\lightgbm_20250929_150521.joblib",
+    "random_forest": "models\\random_forest_20250929_150521.joblib",
+    "sarimax": "models\\sarimax_20250929_150521.joblib"
+  },
+  "best_model": {
+    "name": "xgboost",
+    "metrics": {
+      "mae": 0.045445971825608486,
+      "rmse": 0.06668580264714333,
+      "mape": 1.1960811250824857,
+      "r2": 0.9992575589776763
+    }
+  },
+  "summary_metadata": {
+    "created_at": "2025-09-29T15:07:47.364295",
+    "summary_version": "1.0",
+    "total_metrics_count": 0,
+    "total_models_count": 0
+  }
+}
